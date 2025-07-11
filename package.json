@@ -1,0 +1,17 @@
+{
+  "name": "wizcord",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.125.6",
+    "dotenv": "^17.1.0",
+    "hono": "^4.8.4"
+  }
+}
