@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "bun --watch server/serve.ts",
     "build": "drizzle-kit push --env production",
-    "start": "bun run server/serve.ts"
+    "start": "bun run server/serve.ts",
+    "migrate": "drizzle-kit migrate",
+    "generate": "drizzle-kit generate",
+    "push": "drizzle-kit push"
   },
   "devDependencies": {
     "@types/bun": "latest",
