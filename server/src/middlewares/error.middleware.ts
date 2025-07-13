@@ -1,7 +1,5 @@
-import { BaseError } from "@/errors/BaseError"
 import { isBaseError } from "@/errors/isError";
 import type { Hono } from "hono"
-import type { StatusCode } from "hono/utils/http-status";
 
 export const errorHandler = (app: Hono) => {
     app.onError((error, c) => {
