@@ -5,11 +5,13 @@ import { logger } from 'hono/logger';
 import serverRouter from './src/routes/server.routes';
 import { db } from './src/Database/db';
 import { server } from './src/Database/schemas/schema';
+import { errorHandler } from '@/middlewares/error.middleware';
 
 const app = new Hono();
 
 
 // middlewares 
+errorHandler(app);
 app.use(logger());
 app.use('*', clerkMiddleware());
 app.basePath('/api/v1')
