@@ -26,6 +26,8 @@
     "@tanstack/react-router": "^1.125.6",
     "dotenv": "^17.2.0",
     "drizzle-orm": "^0.44.2",
-    "hono": "^4.8.4"
+    "hono": "^4.8.4",
+    "pino": "^9.7.0",
+    "pino-pretty": "^13.0.0"
   }
 }
