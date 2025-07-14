@@ -1,4 +1,4 @@
-import { timestamp, pgTable, varchar, text } from "drizzle-orm/pg-core";
+import { timestamp, pgTable, varchar, text, uuid } from "drizzle-orm/pg-core";
 
 export const user = pgTable(
     'users', {
@@ -13,7 +13,7 @@ export const user = pgTable(
 
 export const server = pgTable(
     'server', {
-    id: text('id').primaryKey(),
+    id: uuid('id').primaryKey().defaultRandom(),
     name: varchar('name', { length: 225 }).notNull(),
     owner: text('owner').notNull().references(() => user.id),
     icon: text('icon').notNull(),
@@ -25,8 +25,8 @@ export const server = pgTable(
 
 export const serverMember = pgTable(
     'server_member', {
-        id: text('id').primaryKey(),
-        serverId: text('serverId').notNull().references(() => server.id),
+        id: uuid('id').primaryKey().defaultRandom(),
+        serverId: uuid('serverId').notNull().references(() => server.id),
         userId: text('userId').notNull().references(() => user.id),
         role: varchar('role', { length: 50 }).notNull(),
         joinedAt: timestamp('joinedAt').defaultNow(),
