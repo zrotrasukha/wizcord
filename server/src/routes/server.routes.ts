@@ -1,5 +1,5 @@
 import {Hono} from 'hono';      
-import { User } from '../classes/user';
+import { User } from '../classes/user.class';
 
 const serverRouter = new Hono();
 
