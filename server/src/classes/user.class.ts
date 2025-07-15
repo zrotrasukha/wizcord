@@ -6,22 +6,21 @@ import type { BasicUser } from "../Types/user.types";
 export class User {
     constructor(
         public id: string,
-        public username: string, 
-        public email : string,
-        public avatar : string, 
+        public username: string,
+        public email: string,
+        public avatar: string,
         public createdAt?: Date,
         public updatedAt?: Date
-    ){}
-    
-    public static async getAllUsers(){
-       const users = await db.select().from(user);
-       return users;  
-    }; 
-    
-    public static async getUser(id: string){
-        const currUser = await db.select().from(user)
-        .where(eq(user.id , id));
-        return currUser[0];
-    };
+    ) { }
 
+    public static async getAllUsers(): Promise<typeof user.$inferSelect[]> {
+        const users = await db.select().from(user);
+        return users;
+    }
+
+    public static async getUser(id: string): Promise<typeof user.$inferSelect | undefined> {
+        const currUser = await db.select().from(user)
+            .where(eq(user.id, id));
+        return currUser[0];
+    }
 }
