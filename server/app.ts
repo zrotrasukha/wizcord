@@ -16,19 +16,10 @@ app.use('*', cors({
   origin: ['http://localhost:3000'], // Add your frontend URL
   credentials: true,
 }));
+
+//version 1 
 app.use('*', clerkMiddleware());
 app.basePath('/api/v1')
   .route('/server', serverRouter)
 
-//version 1 
-app.get('/', (c) => {
-  const auth = getAuth(c);
-  if(!auth?.userId) {
-    return c.json({ message: 'Unauthorized' }, UNAUTHORIZED);
-  }
-  const userId = auth.userId;
-  console.log({userId});
-
-  return c.json({ message: 'Welcome to Wizcord API', userId});
-})
 export default app; 
