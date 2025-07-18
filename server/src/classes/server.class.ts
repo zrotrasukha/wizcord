@@ -1,41 +1,45 @@
 import { db } from "@/Database/db";
-import { server } from "@/Database/schemas/schema";
-import { eq } from "drizzle-orm";
+import { server, serverMember } from "@/Database/schemas/schema";
+import { eq, sql } from "drizzle-orm";
 
 export class Server {
     constructor(
         public id: string,
         public name: string,
-        public owner: string,
+        public admin: string,
         public icon: string,
         public description: string,
         public createdAt?: Date,
         public updatedAt?: Date
     ) { }
 
-    public static async getServersById(id: string) {
-        const [currServer] = await db
-            .select()
-            .from(server)
-            .where(eq(server.id, id));
-        return currServer;
+    public static async getAllServers(userId: string) {
+        const adminServers = await db.select().from(server)
+            .where(eq(server.admin, userId));
+
+        const memberServer = await db.select().from(server)
+            .innerJoin(serverMember, eq(serverMember.serverId, server.id))
+            .where(eq(serverMember.userId, userId));
+        
+        const allServer = [...adminServers, ...memberServer];
+        return allServer;
     }
-    public static async getAllServers() {
-        const servers = await db
-            .select()
-            .from(server);
-        return servers;
+
+    public static async getServersById(id: string) {
+        const servers = await db.select().from(server)
+            .where(eq(server.id, id));
+        return servers[0] || null;
     }
 
     public static async createServer(
         name: string,
-        owner: string,
+        admin: string,
         description: string,
         icon?: string | '',
     ) {
         const serverValues = {
             name,
-            owner,
+            admin,
             description,
             icon: icon || '',
         }
