@@ -6,6 +6,7 @@
       "dependencies": {
         "@clerk/backend": "^2.4.1",
         "@hono/clerk-auth": "^3.0.2",
+        "@hono/zod-validator": "^0.7.1",
         "@neondatabase/serverless": "^1.0.1",
         "@tanstack/react-router": "^1.125.6",
         "dotenv": "^17.2.0",
@@ -91,6 +92,8 @@
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.25.6", "", { "os": "win32", "cpu": "x64" }, "sha512-NgJPHHbEpLQgDH2MjQu90pzW/5vvXIZ7KOnPyNBm92A6WgZ/7b6fJyUBjoumLqeOQQGqY2QjQxRo97ah4Sj0cA=="],
 
     "@hono/clerk-auth": ["@hono/clerk-auth@3.0.2", "", { "dependencies": { "@clerk/backend": "^2.4.1", "@clerk/types": "^4.64.0" }, "peerDependencies": { "hono": ">=3.0.0" } }, "sha512-47Q9Nyd2aGD2eRS0VHKhJnUyhSuRMtuy8cmZ5oPtlMb8nUn5e9yF6yQw+dMlmt9m8MMGt8cEXA5VsnRma8EL/g=="],
+
+    "@hono/zod-validator": ["@hono/zod-validator@0.7.1", "", { "peerDependencies": { "hono": ">=3.9.0", "zod": "^3.25.0 || ^4.0.0" } }, "sha512-8+vJT1RvezAx5sN7hiZ5Mis0RMuFL77nBEcqQQgT9ufoLkxr+7ll461WlBJQcGoQSY6EGMClVae19v3s/7bbgQ=="],
 
     "@neondatabase/serverless": ["@neondatabase/serverless@1.0.1", "", { "dependencies": { "@types/node": "^22.15.30", "@types/pg": "^8.8.0" } }, "sha512-O6yC5TT0jbw86VZVkmnzCZJB0hfxBl0JJz6f+3KHoZabjb/X08r9eFA+vuY06z1/qaovykvdkrXYq3SPUuvogA=="],
 
